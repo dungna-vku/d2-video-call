@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>D2 Network - Video Call</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <script src="https://unpkg.com/peerjs@1.4.5/dist/peerjs.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.8.3/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.8.3/firebase-firestore-compat.js"></script>
+    <script src="main.js"></script>
+
+    <div class="container">
+      <video playsinline autoplay id="remoteVideo"></video>
+      <video playsinline autoplay id="localVideo"></video>
+
+      <div class="buttonPanel">
+        <div class="btnVideo" onclick="handleToggleVideo()">
+          <img
+            class="icon"
+            src="./assets/enable-video.png"
+            alt="Toggle video"
+          />
+        </div>
+        <div class="btnAudio" onclick="handleToggleAudio()">
+          <img
+            class="icon"
+            src="./assets/enable-audio.png"
+            alt="Toggle audio"
+          />
+        </div>
+        <div class="btnEnd" onclick="endCall()">
+          <img class="icon" src="./assets/end-call.png" alt="End call" />
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
