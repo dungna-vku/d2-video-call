@@ -64,8 +64,6 @@ const startCallFromWeb = () => {
 
 // Hàm lắng nghe cuộc gọi trên web
 const listenFromWeb = () => {
-  console.log("listen from web");
-
   peer = new Peer();
 
   peer.on("open", (id) => {
@@ -109,6 +107,8 @@ const listenFromWeb = () => {
 
 // Hàm lắng nghe cuộc gọi
 const listen = () => {
+  console.log("listen");
+
   peer.on("call", (call) => {
     call.answer(localStream);
     call.on("stream", (remoteStream) => {
@@ -124,6 +124,8 @@ const listen = () => {
 
 // Hàm bắt đầu cuộc gọi
 const startCall = (remotePeerID) => {
+  console.log("start call to", remotePeerID);
+
   let call = peer.call(remotePeerID, localStream);
   call &&
     call.on("stream", (remoteStream) => {
