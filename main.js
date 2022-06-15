@@ -132,7 +132,6 @@ const startCall = (remotePeerID) => {
       if (!peerList.includes(call.peer)) {
         addRemoteVideo(remoteStream);
         peerList.push(call.peer);
-        currentPeer = call.peerConnection;
       }
     });
 
