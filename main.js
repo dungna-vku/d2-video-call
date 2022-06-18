@@ -12,6 +12,8 @@ const firebaseConfig = {
 const app = firebase.initializeApp(firebaseConfig);
 const db = app.firestore();
 
+const startTime = new Date().getTime();
+
 let peer;
 let peerList = [];
 let localStream;
@@ -48,7 +50,9 @@ const startCallFromWeb = () => {
             db.collection("users")
               .doc(userEmail)
               .onSnapshot((snapshot) => {
-                if (snapshot.data().inCall === "end") {
+                const inCall = snapshot.data().inCall;
+
+                if (!inCall || inCall === "end") {
                   peer.destroy();
 
                   db.collection("users")
@@ -91,7 +95,9 @@ const listenFromWeb = () => {
             db.collection("users")
               .doc(userEmail)
               .onSnapshot((snapshot) => {
-                if (snapshot.data().inCall === "end") {
+                const inCall = snapshot.data().inCall;
+
+                if (!inCall || inCall === "end") {
                   peer.destroy();
 
                   db.collection("users")
